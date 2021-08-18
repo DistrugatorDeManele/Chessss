@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Homepage from './Homepage';
+import Game from './Game';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path="/game">
+          <Game />
+        </Route>
         <Route path="/">
-          <App />
+          <Homepage />
         </Route>
       </Switch>
     </Router>
