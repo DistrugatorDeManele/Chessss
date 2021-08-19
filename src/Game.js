@@ -8,10 +8,12 @@ const Chessboard = require('chessboardjs');
 const Chess = require('chess.js').Chess;
 
 export default class Game extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.socket = this.props.socket;
     this.state = {
-      history: []
+      history: [],
+      both: false
     };
 
     this.blackSquareGrey = '#696969';
@@ -19,9 +21,23 @@ export default class Game extends React.Component {
 
     this.game = new Chess();
     this.board = null;
+    this.socket.emit('link', window.location.search.substring(1));
   }
 
   componentDidMount() {
+    this.socket.on(
+      'link',
+      function(nimic) {
+        this.setState({ both: true });
+      }.bind(this)
+    );
+    this.socket.on(
+      'mutare',
+      function(tabla) {
+        this.setState({ history: tabla });
+        console.log(tabla);
+      }.bind(this)
+    );
     var config = {
       position: 'start',
       pieceTheme:
@@ -85,6 +101,8 @@ export default class Game extends React.Component {
     this.setState({
       history: ar
     });
+    this.socket.emit('mutarecod', window.location.search.substring(1));
+    this.socket.emit('mutare', ar);
   };
 
   greySquare = square => {
@@ -103,9 +121,11 @@ export default class Game extends React.Component {
       <div>
         <div id="myBoard" style={{ width: '400px' }} />
         <div>
+          {!this.state.both && <p>Waiting for the other player to join...</p>}
+          {this.state.both && <p>Both players joined!</p>}
           <ul>
             {this.state.history.map(historyItem => {
-              return <li>{historyItem.map(move => move.san + ' ')}</li>;
+              <li>{historyItem.map(move => move.san + ' ')}</li>;
             })}
           </ul>
         </div>
