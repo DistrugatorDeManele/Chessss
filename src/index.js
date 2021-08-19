@@ -9,6 +9,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/game">
           <Game />
+          
         </Route>
         <Route path="/">
           <Homepage />

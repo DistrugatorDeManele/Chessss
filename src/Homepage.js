@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render(){
     return (
       <div>
-        <p>Backgammon.com</p>
+        <p>Chess.com</p>
         <Link
           to={{
             pathname: '/game'
