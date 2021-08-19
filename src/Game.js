@@ -48,7 +48,7 @@ export default class Game extends React.Component {
       onDragStart: this.onDragStart
     };
 
-    this.board = Chessboard('myBoard', config);
+    this.board = Chessboard('myBoard', config); //IMPORTANT
   }
 
   // only allow pieces to be dragged when the board is oriented
@@ -125,7 +125,7 @@ export default class Game extends React.Component {
           {this.state.both && <p>Both players joined!</p>}
           <ul>
             {this.state.history.map(historyItem => {
-              <li>{historyItem.map(move => move.san + ' ')}</li>;
+              return <li>{historyItem.map(move => move.san + ' ')}</li>;
             })}
           </ul>
         </div>
