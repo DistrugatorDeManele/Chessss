@@ -31,13 +31,6 @@ export default class Game extends React.Component {
         this.setState({ both: true });
       }.bind(this)
     );
-    this.socket.on(
-      'mutare',
-      function(tabla) {
-        this.setState({ history: tabla });
-        console.log(tabla);
-      }.bind(this)
-    );
     var config = {
       position: 'start',
       pieceTheme:
@@ -49,6 +42,12 @@ export default class Game extends React.Component {
     };
 
     this.board = Chessboard('myBoard', config); //IMPORTANT
+    this.socket.on(
+      'mutare',
+      function(mutari) {
+        this.board.move(mutari[0] + '-' + mutari[1]);
+      }.bind(this)
+    );
   }
 
   // only allow pieces to be dragged when the board is oriented
@@ -65,7 +64,6 @@ export default class Game extends React.Component {
 
     // highlight the square they moused over
     this.greySquare(source);
-
     // highlight the possible squares for this piece
     for (var i = 0; i < moves.length; i++) {
       this.greySquare(moves[i].to);
@@ -78,19 +76,20 @@ export default class Game extends React.Component {
 
   onDrop = (source, target) => {
     this.removeGreySquares();
-
+    var mutari = [source, target];
+    this.socket.emit('mutarecod', window.location.search.substring(1));
+    this.socket.emit('mutare', mutari);
     // see if the move is legal
     var move = this.game.move({
       from: source,
       to: target,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     });
-
+    console.log(this.game.move);
     // illegal move
     if (move === null) return 'snapback';
 
     // updateStatus()
-
     this.setHistory(this.game.history({ verbose: true }));
   };
 
@@ -101,8 +100,6 @@ export default class Game extends React.Component {
     this.setState({
       history: ar
     });
-    this.socket.emit('mutarecod', window.location.search.substring(1));
-    this.socket.emit('mutare', ar);
   };
 
   greySquare = square => {
