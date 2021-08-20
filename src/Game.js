@@ -18,19 +18,12 @@ export default class Game extends React.Component {
 
     this.blackSquareGrey = '#696969';
     this.whiteSquareGrey = '#a9a9a9';
-
     this.game = new Chess();
     this.board = null;
     this.socket.emit('link', window.location.search.substring(1));
   }
 
   componentDidMount() {
-    this.socket.on(
-      'link',
-      function(nimic) {
-        this.setState({ both: true });
-      }.bind(this)
-    );
     var config = {
       position: 'start',
       pieceTheme:
@@ -40,12 +33,22 @@ export default class Game extends React.Component {
       onDrop: this.onDrop,
       onDragStart: this.onDragStart
     };
-
     this.board = Chessboard('myBoard', config); //IMPORTANT
+    this.socket.on(
+      'link',
+      function(nimic) {
+        if (nimic == 'negru') {
+          this.board.orientation('black');
+          console.log(this.turn);
+        }
+        this.setState({ both: true });
+      }.bind(this)
+    );
+
     this.socket.on(
       'mutare',
       function(mutari) {
-        this.board.move(mutari[0] + '-' + mutari[1]);
+        if (this.board != null) this.board.move(mutari[0] + '-' + mutari[1]);
       }.bind(this)
     );
   }
@@ -76,9 +79,6 @@ export default class Game extends React.Component {
 
   onDrop = (source, target) => {
     this.removeGreySquares();
-    var mutari = [source, target];
-    this.socket.emit('mutarecod', window.location.search.substring(1));
-    this.socket.emit('mutare', mutari);
     // see if the move is legal
     var move = this.game.move({
       from: source,
@@ -88,7 +88,9 @@ export default class Game extends React.Component {
     console.log(this.game.move);
     // illegal move
     if (move === null) return 'snapback';
-
+    var mutari = [source, target];
+    this.socket.emit('mutarecod', window.location.search.substring(1));
+    this.socket.emit('mutare', mutari);
     // updateStatus()
     this.setHistory(this.game.history({ verbose: true }));
   };
