@@ -39,7 +39,7 @@ export default class Game extends React.Component {
       function(nimic) {
         if (nimic == 'negru') {
           this.board.orientation('black');
-          console.log(this.turn);
+          this.game.turn('b');
         }
         this.setState({ both: true });
       }.bind(this)
@@ -47,8 +47,9 @@ export default class Game extends React.Component {
 
     this.socket.on(
       'mutare',
-      function(mutari) {
-        if (this.board != null) this.board.move(mutari[0] + '-' + mutari[1]);
+      function(move) {
+        this.game.move(move);
+        this.board.position(this.game.fen());
       }.bind(this)
     );
   }
@@ -90,7 +91,7 @@ export default class Game extends React.Component {
     if (move === null) return 'snapback';
     var mutari = [source, target];
     this.socket.emit('mutarecod', window.location.search.substring(1));
-    this.socket.emit('mutare', mutari);
+    this.socket.emit('mutare', move);
     // updateStatus()
     this.setHistory(this.game.history({ verbose: true }));
   };
