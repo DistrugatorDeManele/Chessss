@@ -39,7 +39,6 @@ export default class Game extends React.Component {
       function(nimic) {
         if (nimic == 'negru') {
           this.board.orientation('black');
-          this.game.turn('b');
         }
         this.setState({ both: true });
       }.bind(this)
@@ -57,20 +56,27 @@ export default class Game extends React.Component {
   // only allow pieces to be dragged when the board is oriented
   // in their direction
   onDragStart = (source, piece, position, orientation) => {
-    // get list of possible moves for this square
-    var moves = this.game.moves({
-      square: source,
-      verbose: true
-    });
+    if (
+      (this.board.orientation() == 'black' && this.game.turn() == 'b') ||
+      (this.board.orientation() == 'white' && this.game.turn() == 'w')
+    ) {
+      // get list of possible moves for this square
+      var moves = this.game.moves({
+        square: source,
+        verbose: true
+      });
 
-    // exit if there are no moves available for this square
-    if (moves.length === 0) return;
+      // exit if there are no moves available for this square
+      if (moves.length === 0) return;
 
-    // highlight the square they moused over
-    this.greySquare(source);
-    // highlight the possible squares for this piece
-    for (var i = 0; i < moves.length; i++) {
-      this.greySquare(moves[i].to);
+      // highlight the square they moused over
+      this.greySquare(source);
+      // highlight the possible squares for this piece
+      for (var i = 0; i < moves.length; i++) {
+        this.greySquare(moves[i].to);
+      }
+    } else {
+      return false;
     }
   };
 
@@ -79,21 +85,26 @@ export default class Game extends React.Component {
   };
 
   onDrop = (source, target) => {
-    this.removeGreySquares();
-    // see if the move is legal
-    var move = this.game.move({
-      from: source,
-      to: target,
-      promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    });
-    console.log(this.game.move);
-    // illegal move
-    if (move === null) return 'snapback';
-    var mutari = [source, target];
-    this.socket.emit('mutarecod', window.location.search.substring(1));
-    this.socket.emit('mutare', move);
-    // updateStatus()
-    this.setHistory(this.game.history({ verbose: true }));
+    if (
+      (this.board.orientation() == 'black' && this.game.turn() == 'b') ||
+      (this.board.orientation() == 'white' && this.game.turn() == 'w')
+    ) {
+      this.removeGreySquares();
+      // see if the move is legal
+      var move = this.game.move({
+        from: source,
+        to: target,
+        promotion: 'q' // NOTE: always promote to a queen for example simplicity
+      });
+      console.log(this.game.move);
+      // illegal move
+      if (move === null) return 'snapback';
+      var mutari = [source, target];
+      this.socket.emit('mutarecod', window.location.search.substring(1));
+      this.socket.emit('mutare', move);
+      // updateStatus()
+      this.setHistory(this.game.history({ verbose: true }));
+    }
   };
 
   setHistory = history => {
