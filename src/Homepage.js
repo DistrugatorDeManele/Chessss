@@ -4,14 +4,28 @@ import { AwesomeButton } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-red.css';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      link: this.genereaza()
+      link: this.genereaza(),
+      random: true,
+      cautare: false,
+      gasit: false
     };
     this.socket = this.props.socket;
     this.genereaza = this.genereaza.bind(this);
+    this.joaca = this.joaca.bind(this);
+  }
+  componentDidMount() {
+    this.socket.on(
+      'gasit',
+      function(cod) {
+        this.setState({ link: cod });
+        this.setState({ gasit: true });
+      }.bind(this)
+    );
   }
   genereaza() {
     var link1 = 'https://react-upk3at.stackblitz.io/game?';
@@ -25,13 +39,28 @@ export default class App extends React.Component {
     //this.socket.emit('invite', window.location.search.substring(1));
     return link1;
   }
+  joaca() {
+    this.setState({ random: false });
+    this.setState({ cautare: true });
+    var nimic = null;
+    this.socket.emit('cautare', nimic);
+  }
   render() {
     return (
       <div>
+        {this.state.gasit && (
+          <Redirect
+            to={{
+              pathname: '/game',
+              search: this.state.link,
+              state: { fromDashboard: true }
+            }}
+          />
+        )}
         <h1>Chess.com</h1>
         <p>
           {' '}
-          Send this link to your friend:
+          Invite your friend with this link !
           <input
             type="text"
             value={this.state.link}
@@ -39,16 +68,20 @@ export default class App extends React.Component {
             autoFocus
             readOnly
           />
+          <Link
+            to={{
+              pathname: '/game',
+              search: this.state.link.substring(this.state.link.length - 10),
+              state: { fromDashboard: true }
+            }}
+          >
+            <AwesomeButton> Play with friend</AwesomeButton>
+          </Link>
         </p>
-        <Link
-          to={{
-            pathname: '/game',
-            search: this.state.link.substring(this.state.link.length - 10),
-            state: { fromDashboard: true }
-          }}
-        >
-          <AwesomeButton> New Game </AwesomeButton>
-        </Link>
+        {this.state.random && (
+          <AwesomeButton onPress={this.joaca}> Play with random </AwesomeButton>
+        )}
+        {this.state.cautare && <h2> Searching for player... </h2>}
       </div>
     );
   }

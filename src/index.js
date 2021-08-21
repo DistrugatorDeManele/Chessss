@@ -10,10 +10,10 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/game">
-          <Game socket = {socket}/>
+          <Game socket={socket} />
         </Route>
         <Route path="/">
-          <Homepage socket = {socket}/>
+          <Homepage socket={socket} />
         </Route>
       </Switch>
     </Router>
