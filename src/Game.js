@@ -51,6 +51,15 @@ export default class Game extends React.Component {
         this.board.position(this.game.fen());
       }.bind(this)
     );
+    this.socket.on(
+      'history',
+      function(history) {
+        var his = history;
+        this.setState({
+          history: his
+        });
+      }.bind(this)
+    );
   }
 
   // only allow pieces to be dragged when the board is oriented
@@ -104,6 +113,9 @@ export default class Game extends React.Component {
       this.socket.emit('mutare', move);
       // updateStatus()
       this.setHistory(this.game.history({ verbose: true }));
+      if (this.game.game_over() == true) {
+        alert('Game Over');
+      }
     }
   };
 
@@ -113,6 +125,10 @@ export default class Game extends React.Component {
 
     this.setState({
       history: ar
+    });
+    this.socket.emit('history', {
+      link: window.location.search.substring(1),
+      archive: ar
     });
   };
 
