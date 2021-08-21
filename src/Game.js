@@ -146,11 +146,14 @@ export default class Game extends React.Component {
   render() {
     return (
       <div>
-        <div id="myBoard" style={{ width: '400px' }} />
+        <div id="myBoard" style={{ width: '800px' }} />
         <div>
-          {!this.state.both && <p>Waiting for the other player to join...</p>}
-          {this.state.both && <p>Both players joined!</p>}
-          <ul>
+          {!this.state.both && (
+            <h2 id="waiting">Waiting for the other player to join...</h2>
+          )}
+          {this.state.both && <h2 id="waiting2">Both players joined!</h2>}
+          <h2 id="istoric">History</h2>
+          <ul id="history">
             {this.state.history.map(historyItem => {
               return <li>{historyItem.map(move => move.san + ' ')}</li>;
             })}

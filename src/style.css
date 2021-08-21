@@ -1,3 +1,29 @@
-h1, p {
+h1,
+p {
   font-family: Lato;
+}
+#myBoard {
+  position: absolute;
+  top: 8%;
+  right: 35%;
+}
+#waiting {
+  position: absolute;
+  top: 7%;
+  right: 13%;
+}
+#waiting2 {
+  position: absolute;
+  top: 7%;
+  right: 22%;
+}
+#history {
+  position: absolute;
+  right: 30%;
+  top: 16%;
+}
+#istoric {
+  position: absolute;
+  right: 28%;
+  top: 12%;
 }
