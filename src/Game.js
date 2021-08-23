@@ -13,13 +13,13 @@ export default class Game extends React.Component {
     this.socket = this.props.socket;
     this.state = {
       history: [],
-      both: false,
-      game: new Chess()
+      both: false
     };
 
     this.blackSquareGrey = '#696969';
     this.whiteSquareGrey = '#a9a9a9';
-    this.board = null;
+    this.game = new Chess();
+    this.board;
     this.socket.emit('link', window.location.search.substring(1));
   }
 
@@ -43,12 +43,17 @@ export default class Game extends React.Component {
         this.setState({ both: true });
       }.bind(this)
     );
-
     this.socket.on(
       'mutare',
       function(move) {
-        this.state.game.move(move);
-        this.board.position(this.state.game.fen());
+        this.game.move(move.miscare);
+        this.board.position(this.game.fen());
+      }.bind(this)
+    );
+    this.socket.on(
+      'tabla',
+      function(t1) {
+        this.board.position(t1.tabla);
       }.bind(this)
     );
     this.socket.on(
@@ -66,11 +71,11 @@ export default class Game extends React.Component {
   // in their direction
   onDragStart = (source, piece, position, orientation) => {
     if (
-      (this.board.orientation() == 'black' && this.state.game.turn() == 'b') ||
-      (this.board.orientation() == 'white' && this.state.game.turn() == 'w')
+      (this.board.orientation() == 'black' && this.game.turn() == 'b') ||
+      (this.board.orientation() == 'white' && this.game.turn() == 'w')
     ) {
       // get list of possible moves for this square
-      var moves = this.state.game.moves({
+      var moves = this.game.moves({
         square: source,
         verbose: true
       });
@@ -95,25 +100,25 @@ export default class Game extends React.Component {
 
   onDrop = (source, target) => {
     if (
-      (this.board.orientation() == 'black' && this.state.game.turn() == 'b') ||
-      (this.board.orientation() == 'white' && this.state.game.turn() == 'w')
+      (this.board.orientation() == 'black' && this.game.turn() == 'b') ||
+      (this.board.orientation() == 'white' && this.game.turn() == 'w')
     ) {
       this.removeGreySquares();
       // see if the move is legal
-      var move = this.state.game.move({
+      var move = this.game.move({
         from: source,
         to: target,
         promotion: 'q' // NOTE: always promote to a queen for example simplicity
       });
-      console.log(this.state.game.move);
+      console.log(this.game.move);
       // illegal move
       if (move === null) return 'snapback';
       var mutari = [source, target];
       this.socket.emit('mutarecod', window.location.search.substring(1));
-      this.socket.emit('mutare', move);
+      this.socket.emit('mutare', { tabla: this.game.fen(), miscare: move });
       // updateStatus()
-      this.setHistory(this.state.game.history({ verbose: true }));
-      if (this.state.game.game_over() == true) {
+      this.setHistory(this.game.history({ verbose: true }));
+      if (this.game.game_over() == true) {
         alert('Game Over');
       }
     }
