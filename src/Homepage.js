@@ -78,14 +78,17 @@ export default class App extends React.Component {
               state: { fromDashboard: true }
             }}
           >
-            <AwesomeButton className="ms-2"> Play with friend</AwesomeButton>
+            <button className="ms-2" className="mt-2">
+              {' '}
+              Play with friend
+            </button>
           </Link>
         </p>
         {this.state.random && (
-          <AwesomeButton className="ms-3" onPress={this.joaca}>
+          <button className="ms-3" onClick={this.joaca}>
             {' '}
             Play with random{' '}
-          </AwesomeButton>
+          </button>
         )}
         {this.state.cautare && <h2> Searching for player... </h2>}
       </div>
