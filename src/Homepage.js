@@ -2,7 +2,6 @@ import React from 'react';
 import './hp.css';
 import { AwesomeButton } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
-import 'react-awesome-button/dist/themes/theme-red.css';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -79,11 +78,14 @@ export default class App extends React.Component {
               state: { fromDashboard: true }
             }}
           >
-            <AwesomeButton> Play with friend</AwesomeButton>
+            <AwesomeButton className="ms-2"> Play with friend</AwesomeButton>
           </Link>
         </p>
         {this.state.random && (
-          <AwesomeButton onPress={this.joaca}> Play with random </AwesomeButton>
+          <AwesomeButton className="ms-3" onPress={this.joaca}>
+            {' '}
+            Play with random{' '}
+          </AwesomeButton>
         )}
         {this.state.cautare && <h2> Searching for player... </h2>}
       </div>
