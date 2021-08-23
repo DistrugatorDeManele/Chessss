@@ -1,10 +1,11 @@
 import React from 'react';
-import './style.css';
+import './hp.css';
 import { AwesomeButton } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-red.css';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -57,11 +58,14 @@ export default class App extends React.Component {
             }}
           />
         )}
-        <h1>Chess.com</h1>
-        <p>
+        <nav id="title">
+          <h1>Chess.com</h1>
+        </nav>
+        <p id="invite">
           {' '}
           Invite your friend with this link !
           <input
+            id="link"
             type="text"
             value={this.state.link}
             size="30"
