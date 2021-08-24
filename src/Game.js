@@ -56,9 +56,9 @@ export default class Game extends React.Component {
     this.socket.on(
       'tabla',
       function(t1) {
-        this.game.load(t1.istorie);
+        if (t1 != null) this.game.load(t1.istorie);
         this.board.position(this.game.fen());
-        this.game.load_pgn(t1.tabel);
+        if (t1 != null) this.game.load_pgn(t1.tabel);
         this.setHistory(this.game.history({ verbose: true }));
         console.log('Am intrat');
       }.bind(this)
