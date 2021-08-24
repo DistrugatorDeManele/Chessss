@@ -46,14 +46,15 @@ export default class Game extends React.Component {
     this.socket.on(
       'mutare',
       function(move) {
-        this.game.move(move.miscare);
+        this.game.load(move.istorie);
         this.board.position(this.game.fen());
       }.bind(this)
     );
     this.socket.on(
       'tabla',
       function(t1) {
-        this.board.position(t1.tabla);
+        this.game.load(t1.istorie);
+        this.board.position(this.game.fen());
       }.bind(this)
     );
     this.socket.on(
@@ -115,7 +116,11 @@ export default class Game extends React.Component {
       if (move === null) return 'snapback';
       var mutari = [source, target];
       this.socket.emit('mutarecod', window.location.search.substring(1));
-      this.socket.emit('mutare', { tabla: this.game.fen(), miscare: move });
+      this.socket.emit('mutare', {
+        istorie: this.game.fen(),
+        miscare: move,
+        tabla: this.board.position()
+      });
       // updateStatus()
       this.setHistory(this.game.history({ verbose: true }));
       if (this.game.game_over() == true) {
