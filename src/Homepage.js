@@ -63,7 +63,9 @@ export default class App extends React.Component {
           </a>
           <a id="home-link" href="https://react-upk3at.stackblitz.io/">
             {' '}
+            <h3 id = "home">
             Home
+            </h3>
           </a>
         </div>
         <p id="invite">

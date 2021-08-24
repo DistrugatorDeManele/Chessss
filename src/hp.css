@@ -5,6 +5,7 @@
   display: flex;
   line-height: 20;
   font-size: 150%;
+  font-weight: 550;
 }
 html,
 body {
@@ -86,13 +87,18 @@ h1 {
   color: black;
   border: 2px solid transparent;
   padding-top: 15px;
-  padding-left: 40px;
+  padding-left: 20px;
+  font-weight: 700;
 }
 #title-link {
   text-decoration: none;
   color: black;
   border: 2px solid transparent;
   padding-right: 20px;
+  padding-top: 5px;
+}
+#home {
+  font-weight: 550;
 }
 #home-link:hover,
 #title-link:hover {
