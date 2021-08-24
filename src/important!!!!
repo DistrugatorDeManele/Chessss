@@ -1,1 +1,0 @@
-io.sockets.adapter.rooms.get(cod).has(id)
