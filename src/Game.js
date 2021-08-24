@@ -59,7 +59,7 @@ export default class Game extends React.Component {
         this.game.load(t1.istorie);
         this.board.position(this.game.fen());
         this.game.load_pgn(t1.tabel);
-        this.forceUpdate();
+        this.setHistory(this.game.history({ verbose: true }));
         console.log('Am intrat');
       }.bind(this)
     );
