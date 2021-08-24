@@ -58,7 +58,7 @@ export default class App extends React.Component {
           />
         )}
         <nav id="title">
-          <h1>Chess.com</h1>
+          <h1>ChessWorld</h1>
         </nav>
         <p id="invite">
           {' '}
@@ -91,6 +91,16 @@ export default class App extends React.Component {
           </button>
         )}
         {this.state.cautare && <h2> Searching for player... </h2>}
+        <div id="main-box">
+          <button id="multiplayer">
+            {' '}
+            <div id="text-mp">Multiplayer </div>
+          </button>{' '}
+          <button id="computer">
+            {' '}
+            <div id="text-pc">Computer </div>
+          </button>{' '}
+        </div>
       </div>
     );
   }

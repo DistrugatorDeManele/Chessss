@@ -23,3 +23,49 @@ h1 {
   margin-left: 10px;
   font-size: large;
 }
+#main-box {
+  border: 3px solid transparent;
+  margin-top: 100px;
+  margin-left: 600px;
+  margin-right: 600px;
+  height: 500px;
+  width: 700px;
+  background-color: #c59143;
+  border-radius: 30px;
+}
+#multiplayer {
+  margin: 0 auto;
+  display: block;
+  margin-top: 30px;
+  width: 600px;
+  height: 70px;
+  background-color: #ffe0b6;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 300%;
+  color: rgb(63, 63, 63);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  line-height: normal;
+  transition: all 0.8s ease 0s;
+}
+#computer {
+  margin: 0 auto;
+  display: block;
+  margin-top: 30px;
+  width: 600px;
+  height: 70px;
+  background-color: rgb(255, 215, 158);
+  border: 1px solid transparent;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 300%;
+  color: rgb(63, 63, 63);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  line-height: normal;
+  transition: all 0.8s ease 0s;
+}
+#computer:hover,
+#multiplayer:hover {
+  background-color: #fab54e;
+}
