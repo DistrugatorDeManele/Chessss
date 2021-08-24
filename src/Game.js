@@ -55,6 +55,7 @@ export default class Game extends React.Component {
       function(t1) {
         this.game.load(t1.istorie);
         this.board.position(this.game.fen());
+        console.log('Am intrat');
       }.bind(this)
     );
     this.socket.on(
