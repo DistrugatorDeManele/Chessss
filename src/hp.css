@@ -38,8 +38,8 @@ h1 {
   display: block;
   margin-top: 30px;
   width: 600px;
-  height: 70px;
-  background-color: #ffe0b6;
+  height: 85px;
+  background-color: #ffe1b6;
   border: 1px solid transparent;
   border-radius: 30px;
   font-weight: 700;
@@ -54,8 +54,8 @@ h1 {
   display: block;
   margin-top: 30px;
   width: 600px;
-  height: 70px;
-  background-color: rgb(255, 215, 158);
+  height: 85px;
+  background-color: #ffe1b6;
   border: 1px solid transparent;
   border-radius: 30px;
   font-weight: 700;
@@ -68,4 +68,33 @@ h1 {
 #computer:hover,
 #multiplayer:hover {
   background-color: #fab54e;
+}
+#text2-mp {
+  font-size: 1.35rem;
+}
+#text2-pc {
+  font-size: 1.35rem;
+}
+#home-link {
+  position: absolute;
+  top: -23%;
+  right: 83%;
+  all: initial;
+  width: 100px;
+  font-size: 1.35rem;
+  text-decoration: none;
+  color: black;
+  border: 2px solid transparent;
+  padding-top: 15px;
+  padding-left: 40px;
+}
+#title-link {
+  text-decoration: none;
+  color: black;
+  border: 2px solid transparent;
+  padding-right: 20px;
+}
+#home-link:hover,
+#title-link:hover {
+  background-color: #c2a271;
 }

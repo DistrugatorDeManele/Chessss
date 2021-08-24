@@ -57,9 +57,15 @@ export default class App extends React.Component {
             }}
           />
         )}
-        <nav id="title">
+        <div id="title">
+          <a id = "title-link" href="https://react-upk3at.stackblitz.io">
           <h1>ChessWorld</h1>
-        </nav>
+          </a>
+          <a id="home-link" href="https://react-upk3at.stackblitz.io/">
+            {' '}
+            Home
+          </a>
+        </div>
         <p id="invite">
           {' '}
           Invite your friend with this link !
@@ -95,10 +101,12 @@ export default class App extends React.Component {
           <button id="multiplayer">
             {' '}
             <div id="text-mp">Multiplayer </div>
+            <div id="text2-mp">Play against a friend or a random opponent </div>
           </button>{' '}
           <button id="computer">
             {' '}
             <div id="text-pc">Computer </div>
+            <div id="text2-pc">Train against AI </div>
           </button>{' '}
         </div>
       </div>
