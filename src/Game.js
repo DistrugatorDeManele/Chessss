@@ -13,7 +13,8 @@ export default class Game extends React.Component {
     this.socket = this.props.socket;
     this.state = {
       history: [],
-      both: false
+      both: false,
+      da: false
     };
 
     this.blackSquareGrey = '#696969';
@@ -48,6 +49,8 @@ export default class Game extends React.Component {
       function(move) {
         this.game.load(move.istorie);
         this.board.position(this.game.fen());
+        this.game.load_pgn(move.tabel);
+        this.setHistory(this.game.history({ verbose: true }));
       }.bind(this)
     );
     this.socket.on(
@@ -55,16 +58,9 @@ export default class Game extends React.Component {
       function(t1) {
         this.game.load(t1.istorie);
         this.board.position(this.game.fen());
+        this.game.load_pgn(t1.tabel);
+        this.forceUpdate();
         console.log('Am intrat');
-      }.bind(this)
-    );
-    this.socket.on(
-      'history',
-      function(history) {
-        var his = history;
-        this.setState({
-          history: his
-        });
       }.bind(this)
     );
   }
@@ -116,14 +112,13 @@ export default class Game extends React.Component {
       // illegal move
       if (move === null) return 'snapback';
       var mutari = [source, target];
+      // updateStatus()
+      this.setHistory(this.game.history({ verbose: true }));
       this.socket.emit('mutarecod', window.location.search.substring(1));
       this.socket.emit('mutare', {
         istorie: this.game.fen(),
-        miscare: move,
-        tabla: this.board.position()
+        tabel: this.game.pgn()
       });
-      // updateStatus()
-      this.setHistory(this.game.history({ verbose: true }));
       if (this.game.game_over() == true) {
         alert('Game Over');
       }
@@ -136,10 +131,6 @@ export default class Game extends React.Component {
 
     this.setState({
       history: ar
-    });
-    this.socket.emit('history', {
-      link: window.location.search.substring(1),
-      archive: ar
     });
   };
 
