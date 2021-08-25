@@ -13,7 +13,13 @@ ReactDOM.render(
           <Game socket={socket} />
         </Route>
         <Route path="/">
-          <Homepage socket={socket} />
+          <BrowserRouter>
+            <Auth0Provider>
+              <Auth0ProviderWithHistory>
+                <Homepage socket={socket} />
+              </Auth0ProviderWithHistory>
+            </Auth0Provider>
+          </BrowserRouter>
         </Route>
       </Switch>
     </Router>

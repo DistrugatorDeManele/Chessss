@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.6.0",
     "@popperjs/core": "2.9.3",
     "bootstrap": "5.1.0",
     "chess.js": "0.12.0",
