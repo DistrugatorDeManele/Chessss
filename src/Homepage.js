@@ -5,6 +5,7 @@ import 'react-awesome-button/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import background from './img/background.jpg';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
