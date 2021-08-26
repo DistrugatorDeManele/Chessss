@@ -5,7 +5,7 @@ import 'react-awesome-button/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import King from './path/to/logo.jpg';
+const King = require('./king.jpg');
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +49,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <img src="https://thumbs.dreamstime.com/z/digitally-hand-drawn-sketch-chess-king-dark-shadow-hand-drawn-sketched-chess-king-123329300.jpg" alt="Girl in a jacket" width="500" height="600">
+        <img src={King} alt="BigCo Inc. logo" />
         {this.state.gasit && (
           <Redirect
             to={{
