@@ -5,7 +5,6 @@ import 'react-awesome-button/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import background from './background.jpg';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +47,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div styles={{ backgroundImage: `url(${background})` }}>
+      <div>
         {this.state.gasit && (
           <Redirect
             to={{
@@ -67,7 +66,7 @@ export default class App extends React.Component {
             <h3 id="home">Home</h3>
           </a>
         </div>
-        <p id="invite">
+        <div id="invite">
           {' '}
           Invite your friend with this link !
           <input
@@ -85,19 +84,21 @@ export default class App extends React.Component {
               state: { fromDashboard: true }
             }}
           >
-            <button className="ms-2" className="mt-2">
+            <button id="playf" className="ms-2" className="mt-2">
               {' '}
-              Play with friend
+              <div>Play with friend</div>
             </button>
           </Link>
-        </p>
+        </div>
         {this.state.random && (
-          <button className="ms-3" onClick={this.joaca}>
+          <button id="playr" className="ms-3" onClick={this.joaca}>
             {' '}
             Play with random{' '}
           </button>
         )}
-        {this.state.cautare && <h2> Searching for player... </h2>}
+        {this.state.cautare && (
+          <h2 id="searching"> Searching for player... </h2>
+        )}
         <div id="main-box">
           <button id="multiplayer">
             {' '}

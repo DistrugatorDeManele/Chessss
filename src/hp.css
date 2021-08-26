@@ -7,25 +7,28 @@
   font-size: 150%;
   font-weight: 300;
 }
-body {
-  background-color: #fff6e4;
-}
+
 html,
 body {
   margin: 0px;
   padding: 0px;
+  background-color: #ffe1b6;
 }
 h1 {
   margin-left: 15px;
 }
 #invite {
-  margin-left: 15px;
+  margin-left: 42px;
   font-size: 200%;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 #link {
-  margin-right: 10px;
-  margin-left: 10px;
-  font-size: large;
+  font-size: 70%;
+  margin-left: 20px;
+  border: 3px solid transparent;
+  position: absolute;
+  top: 9.6%;
 }
 #main-box {
   border: 3px solid transparent;
@@ -40,7 +43,7 @@ h1 {
 #multiplayer {
   margin: 0 auto;
   display: block;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 600px;
   height: 85px;
   background-color: #ffe1b6;
@@ -109,4 +112,35 @@ h1 {
 }
 #home {
   font-weight: 540;
+}
+#playf {
+  border-radius: 30px;
+  background-color: #ffe1b6;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  transition: all 0.8s ease 0s;
+  width: 300px;
+  position: absolute;
+  right: 17%;
+  top: 8%;
+}
+#playr {
+  border-radius: 30px;
+  background-color: #ffe1b6;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  transition: all 0.8s ease 0s;
+  width: 300px;
+  margin-left: 15px;
+  font-size: 200%;
+}
+#playf:hover,
+#playr:hover {
+  background-color: #fab54e;
+}
+#searching {
+  margin-left: 40px;
+  font-size: 200%;
+  border-radius: 30px;
+  border: 7px solid transparent;
 }
