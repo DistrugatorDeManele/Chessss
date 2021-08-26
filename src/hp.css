@@ -14,10 +14,6 @@ body {
 }
 body {
   background-color: white !important;
-  background: url(https://c1.wallpaperflare.com/preview/85/553/267/stars-background-blue-photoshop.jpg)
-    no-repeat center center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 h1 {
   margin-left: 15px;
@@ -27,6 +23,7 @@ h1 {
   font-size: 200%;
   margin-top: 20px;
   margin-bottom: 10px;
+  color: black;
 }
 #link {
   font-size: 70%;
