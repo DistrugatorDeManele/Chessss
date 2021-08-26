@@ -7,6 +7,9 @@
   font-size: 150%;
   font-weight: 300;
 }
+body {
+  background-color: #fff6e4;
+}
 html,
 body {
   margin: 0px;
