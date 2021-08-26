@@ -47,7 +47,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ backgroundImage: `url(${background})` }}>
         {this.state.gasit && (
           <Redirect
             to={{
@@ -58,14 +58,12 @@ export default class App extends React.Component {
           />
         )}
         <div id="title">
-          <a id = "title-link" href="https://react-upk3at.stackblitz.io">
-          <h1>ChessWorld</h1>
+          <a id="title-link" href="https://react-upk3at.stackblitz.io">
+            <h1>ChessWorld</h1>
           </a>
           <a id="home-link" href="https://react-upk3at.stackblitz.io/">
             {' '}
-            <h3 id = "home">
-            Home
-            </h3>
+            <h3 id="home">Home</h3>
           </a>
         </div>
         <p id="invite">

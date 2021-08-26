@@ -5,7 +5,7 @@
   display: flex;
   line-height: 20;
   font-size: 150%;
-  font-weight: 550;
+  font-weight: 300;
 }
 html,
 body {
@@ -88,7 +88,7 @@ h1 {
   border: 2px solid transparent;
   padding-top: 15px;
   padding-left: 20px;
-  font-weight: 700;
+  font-weight: 300;
 }
 #title-link {
   text-decoration: none;
@@ -103,4 +103,7 @@ h1 {
 #home-link:hover,
 #title-link:hover {
   background-color: #c2a271;
+}
+#home {
+  font-weight: 540;
 }
