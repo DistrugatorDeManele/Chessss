@@ -57,15 +57,17 @@ export default class App extends React.Component {
             }}
           />
         )}
-        <div id="title">
-          <a id="title-link" href="https://react-upk3at.stackblitz.io">
-            <h1>ChessWorld</h1>
-          </a>
-          <a id="home-link" href="https://react-upk3at.stackblitz.io/">
-            {' '}
-            <h3 id="home">Home</h3>
-          </a>
-        </div>
+        <header id="hp-header">
+          <div id="title">
+            <a id="title-link" href="https://react-upk3at.stackblitz.io">
+              <h1 id="chessworld">ChessWorld</h1>
+            </a>
+            <a id="home-link" href="https://react-upk3at.stackblitz.io/">
+              {' '}
+              <h3 id="home">Home</h3>
+            </a>
+          </div>
+        </header>
         <div id="invite">
           {' '}
           Invite your friend with this link !

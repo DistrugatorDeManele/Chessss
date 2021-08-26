@@ -1,6 +1,5 @@
 #title {
   background-color: #c59143;
-  color: rgb(0, 0, 0);
   min-height: 3rem;
   display: flex;
   line-height: 20;
@@ -12,7 +11,13 @@ html,
 body {
   margin: 0px;
   padding: 0px;
-  background-color: #ffe1b6;
+}
+body {
+  background-color: white !important;
+  background: url(https://c1.wallpaperflare.com/preview/85/553/267/stars-background-blue-photoshop.jpg)
+    no-repeat center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 h1 {
   margin-left: 15px;
@@ -37,7 +42,8 @@ h1 {
   margin-right: 600px;
   height: 500px;
   width: 700px;
-  background-color: #c59143;
+  background-color: #ffd391;
+  opacity: 0.9;
   border-radius: 30px;
 }
 #multiplayer {
@@ -46,7 +52,7 @@ h1 {
   margin-top: 20px;
   width: 600px;
   height: 85px;
-  background-color: #ffe1b6;
+  background-color: #ffeb9c;
   border: 1px solid transparent;
   border-radius: 30px;
   font-weight: 700;
@@ -62,7 +68,7 @@ h1 {
   margin-top: 30px;
   width: 600px;
   height: 85px;
-  background-color: #ffe1b6;
+  background-color: #ffeb9c;
   border: 1px solid transparent;
   border-radius: 30px;
   font-weight: 700;
@@ -74,7 +80,7 @@ h1 {
 }
 #computer:hover,
 #multiplayer:hover {
-  background-color: #fab54e;
+  background-color: #ffba9c;
 }
 #text2-mp {
   font-size: 1.35rem;
@@ -90,39 +96,44 @@ h1 {
   width: 100px;
   font-size: 1.35rem;
   text-decoration: none;
-  color: black;
+  color: #6cebae;
   border: 2px solid transparent;
   padding-top: 15px;
   padding-left: 20px;
-  font-weight: 300;
+  padding-right: 20px;
 }
 #title-link {
   text-decoration: none;
-  color: black;
+  color: #6cebae;
   border: 2px solid transparent;
   padding-right: 20px;
   padding-top: 5px;
-}
-#home {
-  font-weight: 550;
 }
 #home-link:hover,
 #title-link:hover {
   background-color: #c2a271;
 }
 #home {
-  font-weight: 540;
+  font-weight: 800;
+  background: url(https://media.freestocktextures.com/cache/5c/b2/5cb2fad072a5e73efa48051829a91f99.jpg)
+    no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-align: center;
 }
 #playf {
   border-radius: 30px;
   background-color: #ffe1b6;
-  margin-left: 10px;
   border: 1px solid transparent;
   transition: all 0.8s ease 0s;
   width: 300px;
   position: absolute;
-  right: 39%;
-  top: 8%;
+  right: 38%;
+  top: 8.2%;
 }
 #playr {
   border-radius: 30px;
@@ -142,4 +153,22 @@ h1 {
   font-size: 200%;
   border-radius: 30px;
   border: 7px solid transparent;
+}
+#hp-header {
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%);
+  border-bottom: 1px solid #ccc;
+}
+#chessworld {
+  font-weight: 800;
+  background: url(https://media.freestocktextures.com/cache/5c/b2/5cb2fad072a5e73efa48051829a91f99.jpg)
+    no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  padding: 0;
+  text-align: center;
+  margin-left: 15px;
 }
