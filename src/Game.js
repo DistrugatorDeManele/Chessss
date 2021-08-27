@@ -19,7 +19,7 @@ export default class Game extends React.Component {
 
     this.blackSquareGrey = '#696969';
     this.whiteSquareGrey = '#a9a9a9';
-    this.game = new Chess();
+    this.game;
     this.board;
     this.socket.emit('link', window.location.search.substring(1));
   }
@@ -149,7 +149,7 @@ export default class Game extends React.Component {
     return (
       <div>
         <div id="myBoard" style={{ width: '800px' }} />
-        <div id = "right-box">
+        <div id="right-box">
           {!this.state.both && (
             <h2 id="waiting">Waiting for the other player to join...</h2>
           )}
