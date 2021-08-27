@@ -19,8 +19,8 @@ export default class Game extends React.Component {
 
     this.blackSquareGrey = '#696969';
     this.whiteSquareGrey = '#a9a9a9';
-    this.game;
-    this.board;
+    this.game = new Chess();
+    this.board = null;
     this.socket.emit('link', window.location.search.substring(1));
   }
 
