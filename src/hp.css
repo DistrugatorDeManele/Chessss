@@ -1,5 +1,5 @@
 #title {
-  background-color: #c59143;
+  background-color: #26211b;
   min-height: 3rem;
   display: flex;
   line-height: 20;
@@ -13,7 +13,7 @@ body {
   padding: 0px;
 }
 body {
-  background-color: white !important;
+  background-color: #312e2b !important;
 }
 h1 {
   margin-left: 15px;
@@ -23,7 +23,7 @@ h1 {
   font-size: 200%;
   margin-top: 20px;
   margin-bottom: 10px;
-  color: black;
+  color: rgb(186, 186, 185);
 }
 #link {
   font-size: 70%;
@@ -39,7 +39,7 @@ h1 {
   margin-right: 600px;
   height: 500px;
   width: 700px;
-  background-color: #ffd391;
+  background-color: #26211b;
   opacity: 0.9;
   border-radius: 30px;
 }
@@ -49,12 +49,12 @@ h1 {
   margin-top: 20px;
   width: 600px;
   height: 85px;
-  background-color: #ffeb9c;
+  background-color: #B58863;
   border: 1px solid transparent;
   border-radius: 30px;
   font-weight: 700;
   font-size: 300%;
-  color: rgb(63, 63, 63);
+  color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   line-height: normal;
   transition: all 0.8s ease 0s;
@@ -65,19 +65,19 @@ h1 {
   margin-top: 30px;
   width: 600px;
   height: 85px;
-  background-color: #ffeb9c;
+  background-color: rgb(65, 62, 60);
   border: 1px solid transparent;
   border-radius: 30px;
   font-weight: 700;
   font-size: 300%;
-  color: rgb(63, 63, 63);
+  color: rgb(186, 186, 185);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   line-height: normal;
   transition: all 0.8s ease 0s;
 }
 #computer:hover,
 #multiplayer:hover {
-  background-color: #ffba9c;
+  background-color: #504f4f;
 }
 #text2-mp {
   font-size: 1.35rem;
@@ -108,7 +108,7 @@ h1 {
 }
 #home-link:hover,
 #title-link:hover {
-  background-color: #c2a271;
+  background-color: #504f4f;
 }
 #home {
   font-weight: 800;
@@ -124,26 +124,28 @@ h1 {
 }
 #playf {
   border-radius: 30px;
-  background-color: #ffe1b6;
+  background-color: rgb(65, 62, 60);
   border: 1px solid transparent;
   transition: all 0.8s ease 0s;
   width: 300px;
   position: absolute;
   right: 38%;
   top: 8.2%;
+  color: rgb(186, 186, 185);
 }
 #playr {
   border-radius: 30px;
-  background-color: #ffe1b6;
+  background-color: rgb(65, 62, 60);
   margin-left: 10px;
   border: 1px solid transparent;
   transition: all 0.8s ease 0s;
   width: 300px;
   font-size: 200%;
+  color: rgb(186, 186, 185);
 }
 #playf:hover,
 #playr:hover {
-  background-color: #fab54e;
+  background-color: #504f4f;
 }
 #searching {
   margin-left: 40px;
@@ -153,7 +155,6 @@ h1 {
 }
 #hp-header {
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%);
-  border-bottom: 1px solid #ccc;
 }
 #chessworld {
   font-weight: 800;

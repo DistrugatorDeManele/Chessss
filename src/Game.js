@@ -149,7 +149,7 @@ export default class Game extends React.Component {
     return (
       <div>
         <div id="myBoard" style={{ width: '800px' }} />
-        <div>
+        <div id = "right-box">
           {!this.state.both && (
             <h2 id="waiting">Waiting for the other player to join...</h2>
           )}
